@@ -1,0 +1,22 @@
+<!-- Form Contact -->
+<div class="email-form">
+    <form action="{{ path('frontend_email') }}" method="post" id="email-form" novalidate>
+        <p>
+            Мы компания друзей,делимся музыкальными творениями человека,благодаря таланту которого,чувствуем всю мощь воображение которое делает нас бесконечными.
+        </p>
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'placeholder' : 'Имя'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr' : {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.message) }}
+            {{ form_widget(form.message, {'attr' : {'class' : 'form-control', 'placeholder' : 'Сообщение'}}) }}
+        </div>
+        <button type="submit" class="btn btn-default">Отправить</button>
+    </form>
+</div>
+<!-- end Form Contact -->

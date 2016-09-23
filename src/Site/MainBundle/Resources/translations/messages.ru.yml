@@ -1,0 +1,6 @@
+frontend:
+    feedback:
+        placeholder:
+            name: Имя
+            email: Электронная почта
+            message: Сообщение

@@ -4,6 +4,10 @@ namespace Site\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Site\MainBundle\Form\Email;
+use Site\MainBundle\Form\Type\EmailType;
+
 include_once("Mobile_Detect.php");
 
 class MainController extends Controller
@@ -183,5 +187,43 @@ class MainController extends Controller
 
         file_put_contents('music/playlist.json', json_encode($audioCopy, TRUE));
         return new Response(json_encode($audioCopy, TRUE), 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function emailAction(Request $request){
+        $entity = new Email();
+        $form = $this->createForm(new EmailType(), $entity);
+
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                $swift = \Swift_Message::newInstance()
+                    ->setSubject('Письмо с сайта')
+                    ->setFrom(array($this->container->getParameter('email_from') => "Письмо с сайта"))
+                    ->setTo($this->container->getParameter('emails_admin'))
+                    ->setBody(
+                        $this->renderView(
+                            'SiteMainBundle:Email:message.html.twig',
+                            array(
+                                'form' => $entity
+                            )
+                        )
+                        , 'text/html'
+                    );
+                $this->get('mailer')->send($swift);
+
+                return new Response('Сообщение успешно отправлено!', 200);
+            }
+
+            return new Response('Ошибка!', 500);
+        }
+
+        return $this->render('SiteMainBundle:Email:form.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }

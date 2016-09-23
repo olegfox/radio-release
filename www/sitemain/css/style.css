@@ -1,8 +1,63 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: Arial;
-    background: #000;
     -webkit-overflow-scrolling:touch;
+    background: #000 url(../images/night.jpg) center center no-repeat;
+    background-size: contain;
 }
+
+.pull-right {
+    float: right;
+}
+
 .content{
     position: relative;
     margin: 0 auto;
@@ -182,44 +237,6 @@ p {
 
 .footer p {
     margin: 20px 219px 20px 219px;
-}
-
-form {
-    margin: 0 219px;
-}
-
-form input[type="text"] {
-    padding: 10px 15px;
-    line-height: 40px;
-    height: 47px;
-    width: 400px;
-    color: #000;
-    background: #e9e9e9;
-    border: none;
-    text-transform: uppercase;
-}
-
-form textarea {
-    width: 400px;
-    height: 173px;
-    max-width: 400px;
-    color: #000;
-    background: #e9e9e9;
-    border: none;
-    text-transform: uppercase;
-    padding: 5px 15px 5px 15px;
-    line-height: 40px;
-}
-
-form input[type="button"] {
-    background: #15d80b;
-    border: none;
-    color: #fff;
-    padding: 10px 15px;
-    line-height: 30px;
-    height: 48px;
-    margin-top: 15px;
-    margin-bottom: 64px;
 }
 
 ::-webkit-input-placeholder {
@@ -407,13 +424,19 @@ ul.catalog li img{
 }
 .audio{
     position: fixed;
-    background: #000;
-    height: 120px;
+    background: none;
+    height: 40px;
     width: 100%;
-    line-height: 120px;
+    line-height: 60px;
     padding: 0px;
     top: 0px;
     z-index: 1000;
+    box-sizing: border-box;
+}
+.audio a.pull-right {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #fff;
 }
 .audio .logo{
     display: inline-block;
@@ -478,7 +501,7 @@ ul.catalog li img{
     border-bottom: 0px;
 }
 .audio .play-control{
-    display: inline-block;
+    display: none;
     position: fixed;
     background: #000;
     width: 50%;
@@ -660,16 +683,6 @@ ul.catalog li img{
     }
 }
 @media screen and (max-width: 800px){
-    .audio{
-        position: fixed;
-        background: #000;
-        height: 60px;
-        width: 100%;
-        line-height: 60px;
-        padding: 0px 15px;
-        top: 0px;
-        z-index: 1000;
-    }
     .audio .player{
         position: relative;
         float: right;
@@ -725,11 +738,12 @@ ul.catalog li img{
 }
 
 body.dark {
-    background: gray;
+    background: #fff url(../images/day.jpg) center center no-repeat;
+    background-size: contain;
 }
 
-body.dark .audio {
-    background: #fff;
+body.dark .audio a.pull-right {
+    color: #000;
 }
 
 body.dark .audio .logo {
@@ -784,4 +798,110 @@ body.dark canvas {
     display: inline;
     vertical-align: middle;
     background-color: #fff;
+}
+
+/* line 649, ../sass/main.sass */
+.email-form {
+    display: none;
+}
+
+/* line 651, ../sass/main.sass */
+#email-form {
+    padding: 30px;
+    max-width: 335px;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 320px) {
+    #email-form {
+        max-width: 300px;
+    }
+}
+/* line 653, ../sass/main.sass */
+#email-form input.error {
+    border: red solid 1px;
+}
+/* line 655, ../sass/main.sass */
+#email-form label.error {
+    font-size: 12px;
+    color: red;
+}
+
+#email-form p {
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+/* line 659, ../sass/main.sass */
+#cboxLoadedContent .alert {
+    margin: 30px;
+}
+
+/* line 661, ../sass/main.sass */
+#cboxClose {
+    display: none;
+    position: fixed;
+    background: url(../images/controls.png) no-repeat top center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+textarea.form-control {
+    resize: none;
+    height: 68px;
+}
+
+.form-control:focus {
+    outline: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }

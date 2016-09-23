@@ -1,0 +1,11 @@
+# src/Site/Bundle/MainBundle/Resources/config/validation.yml
+Site\MainBundle\Form\Email:
+    properties:
+        name:
+            - NotBlank:
+                message: "Пожалуйста введите ваше имя."
+        email:
+            - NotBlank:
+                message: "Пожалуйста введите ваш email адрес."
+            - Email:
+                message: "Введите корректный email адрес."
