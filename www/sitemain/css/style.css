@@ -503,7 +503,7 @@ ul.catalog li img{
 .audio .play-control{
     display: none;
     position: fixed;
-    background: #000;
+    background: rgba(0, 0, 0, 0.5);
     width: 50%;
     height: 50px;
     line-height: 50px;
@@ -515,7 +515,7 @@ ul.catalog li img{
     margin: 0 auto;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 720px) {
     .audio .play-control {
         display: inline-block;
     }
@@ -759,7 +759,7 @@ body.dark .audio .logo {
 }
 
 body.dark .audio .play-control {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 body.dark .audio .play-control .play {
