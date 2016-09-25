@@ -514,6 +514,13 @@ ul.catalog li img{
     right: 0px;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 480px) {
+    .audio .play-control {
+        display: inline-block;
+    }
+}
+
 .audio .play-control .buttons{
     position: relative;
     display: inline-block;
@@ -649,7 +656,7 @@ ul.catalog li img{
         height: auto;
         bottom: 0px;
         top: initial;
-        padding-top: 100px;
+        padding-top: 30px;
     }
     .audio .play-control .buttons{
         display: inline-block;
